@@ -1,0 +1,39 @@
+
+% for y=1:1:10
+%     V(1,y)=1;
+%     V(10,y)=0;
+% end
+% for k=1:1000
+% for x=2:1:9
+%     V(x,1)=(V(x-1,1)+V(x+1,1)+V(x,2))/3;
+%     V(x,10)=(V(x-1,10)+V(x+1,10)+V(x,9))/3;
+%     for y=2:1:9
+%         V(x,y)=(V(x-1,y)+V(x+1,y)+V(x,y-1)+V(x,y+1))/4;
+%     end
+% end
+%    surf(V);
+%    pause(1);
+% end
+nx=10;
+ny=10;
+V=ones(nx,ny);
+for y=1:1:ny
+    V(1,y)=1;
+    V(nx,y)=1;
+end
+for x=1:1:nx
+    V(x,1)=0;
+    V(x,ny)=0;
+end
+for i=1:100
+    for x=2:1:nx-1
+        for y=2:1:ny-1
+            V(x,y)=(V(x-1,y)+V(x+1,y)+V(x,y-1)+V(x,y+1))/4;
+        end
+    end
+    surf(V);
+    pause(0.1);
+end
+%     
+%     quiver([x,y],V);
+%     imboxfilt(V,3);
